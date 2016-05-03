@@ -1,3 +1,12 @@
+/**
+ * $ gulp rsync.test.real.storage
+ * ./dist => ./test/real/storage/chromise
+ *
+ * $ gulp rsync
+ * ./dist => ./test/real/storage/chromise
+ */
+
+
 var gulp = require('gulp'),
     rsync = require('gulp-rsync');
 

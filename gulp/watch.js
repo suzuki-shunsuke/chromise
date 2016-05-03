@@ -1,3 +1,14 @@
+/**
+ * $ gulp watch.src
+ * webpack.src
+ *
+ * $ gulp watch.dist
+ * rsync
+ *
+ * $ gulp watch.test
+ */
+
+
 var gulp = require('gulp'),
     _ = require('underscore');
 

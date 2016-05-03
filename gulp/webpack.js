@@ -1,3 +1,27 @@
+/**
+ * $ gulp webpack.Chromise
+ * ./src/Chromise.js => ./dist/Chromise.js
+ *
+ * $ gulp webpack.jquery
+ * ./src/chromise.jquery.js => ./dist/chromise.jquery.js
+ *
+ * $ gulp webpack.mithril
+ * ./src/chromise.mithril.js => ./dist/chromise.mithril.js
+ *
+ * $ gulp webpack.test.real.storage
+ * ./test/real/storage/src/index.js => ./test/real/storage/dist/index.js
+ *
+ * $ gulp webpack.test.mock.storage
+ * ./test/mock/storage/src/index.js => ./test/mock/storage/dist/index.js
+ *
+ * $ gulp webpack.test.mock
+ * $ gulp webpack.test.real
+ * $ gulp webpack.test
+ * $ gulp webpack.src
+ * $ gulp webpack
+ */
+
+
 var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     uglify = require('gulp-uglify'),
@@ -16,6 +40,7 @@ configs = {
         'Chromise': ['./src/Chromise.js']
       },
       output: {
+        filename: '[name].js',
         library: 'Chromise',
         libraryTarget: 'umd'
       },
@@ -29,11 +54,13 @@ configs = {
       entry: {
         'chromise.jquery': ['./src/chromise.jquery.js']
       },
-      externals: 'jquery',
+      externals: {
+        'jquery': 'jQuery',
+      },
       output: {
         filename: '[name].js',
         library: 'chromise',
-        libraryTarget: 'umd'
+        libraryTarget: 'var'
       },
     }
   },
@@ -45,7 +72,9 @@ configs = {
       entry: {
         'chromise.mithril': ['./src/chromise.mithril.js']
       },
-      externals: 'mithril',
+      externals: {
+        'mithril': 'm',
+      },
       output: {
         filename: '[name].js',
         library: 'chromise',
@@ -61,7 +90,12 @@ configs = {
       entry: {
         'index': ['./test/real/storage/src/index.js']
       },
-      externals: ['jquery', 'mithril'],
+      externals: {
+        'jquery': 'jQuery',
+        'mithril': 'm',
+        'mocha': true,
+        'chai': true
+      },
       output: {
         filename: '[name].js',
       },
@@ -111,6 +145,11 @@ _.each(configs, function(config, key) {
     .pipe(gulp.dest(config.dest)); 
   });
 });
+
+gulp.task(
+  'webpack.src',
+  ['webpack.Chromise', 'webpack.jquery', 'webpack.mithril']
+)
 
 gulp.task(
   'webpack',

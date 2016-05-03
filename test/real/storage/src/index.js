@@ -1,27 +1,28 @@
-let mocha = require('mocha');
-
+let mocha = require('mocha'),
+    $ = require('jquery'),
+    chai = require('chai');
 
 $(() => {
   mocha.setup('tdd');
-  suite('chromise.jquery.storage.local', () => {
-    test('normal', done => chromise.jquery.storage.local.clear()
-      .then(() => chromise.jquery.storage.local.get(null))
+  suite('chromise.storage.local', () => {
+    test('normal', done => chromise.storage.local.clear()
+      .then(() => chromise.storage.local.get(null))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {}), '');
-        return chromise.jquery.storage.local.set({ name: 'John'});
-      }).then(() => chromise.jquery.storage.local.get('name'))
+        return chromise.storage.local.set({ name: 'John'});
+      }).then(() => chromise.storage.local.get('name'))
       .then(items => {
         chai.assert.ok(_.isEqual(items, { name: 'John'}), '');
-        return chromise.jquery.storage.local.set({age: 19});
-      }).then(() => chromise.jquery.storage.local.get(['name', 'age']))
+        return chromise.storage.local.set({age: 19});
+      }).then(() => chromise.storage.local.get(['name', 'age']))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {name: 'John', age: 19}), '');
-        return chromise.jquery.storage.local.remove('name');
-      }).then(() => chromise.jquery.storage.local.get(['name', 'age']))
+        return chromise.storage.local.remove('name');
+      }).then(() => chromise.storage.local.get(['name', 'age']))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {age: 19}), '');
-        return chromise.jquery.storage.local.clear();
-      }).then(() => chromise.jquery.storage.local.get(null))
+        return chromise.storage.local.clear();
+      }).then(() => chromise.storage.local.get(null))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {}), '');
         return $.Deferred().resolve().promise();
@@ -29,25 +30,25 @@ $(() => {
     );
   });
 
-  suite('chromise.jquery.storage.sync', () => {
-    test('normal', (done) => chromise.jquery.storage.sync.clear()
-      .then(() => chromise.jquery.storage.sync.get(null))
+  suite('chromise.storage.sync', () => {
+    test('normal', (done) => chromise.storage.sync.clear()
+      .then(() => chromise.storage.sync.get(null))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {}), '');
-        return chromise.jquery.storage.sync.set({ name: 'John'});
-      }).then(() => chromise.jquery.storage.sync.get('name'))
+        return chromise.storage.sync.set({ name: 'John'});
+      }).then(() => chromise.storage.sync.get('name'))
       .then(items => {
         chai.assert.ok(_.isEqual(items, { name: 'John'}), '');
-        return chromise.jquery.storage.sync.set({age: 19});
-      }).then(() => chromise.jquery.storage.sync.get(['name', 'age']))
+        return chromise.storage.sync.set({age: 19});
+      }).then(() => chromise.storage.sync.get(['name', 'age']))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {name: 'John', age: 19}), '');
-        return chromise.jquery.storage.sync.remove('name');
-      }).then(() => chromise.jquery.storage.sync.get(['name', 'age']))
+        return chromise.storage.sync.remove('name');
+      }).then(() => chromise.storage.sync.get(['name', 'age']))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {age: 19}), '');
-        return chromise.jquery.storage.sync.clear();
-      }).then(() => chromise.jquery.storage.sync.get(null))
+        return chromise.storage.sync.clear();
+      }).then(() => chromise.storage.sync.get(null))
       .then(items => {
         chai.assert.ok(_.isEqual(items, {}), '');
         return $.Deferred().resolve().promise();
@@ -55,10 +56,10 @@ $(() => {
     );
   });
 
-//  suite('chromise.jquery.tabs.create', () => {
+//  suite('chromise.tabs.create', () => {
 //    test('normal', done => {
 //      let url = 'http://example.org/';
-//      chromise.jquery.tabs.create({url: url})
+//      chromise.tabs.create({url: url})
 //      .then(tab => {
 //        chai.assert.equal(tab.url, url);
 //        done();
@@ -66,14 +67,14 @@ $(() => {
 //    });
 //  });
 
-//  suite('chromise.jquery.tabs.get', () => {
+//  suite('chromise.tabs.get', () => {
 //    test('normal', done => {
 //      let tab1;
-//      chromise.jquery.tabs.getCurrent()
+//      chromise.tabs.getCurrent()
 //      .then(tab => {
 //        console.log(tab.id);
 //        tab1 = tab;
-//        return chromise.jquery.tabs.get(tab.id);
+//        return chromise.tabs.get(tab.id);
 //      }).then(tab => {
 //        console.log(tab1.id);
 //        console.log(tab.id);
@@ -83,10 +84,10 @@ $(() => {
 //    });
 //  });
 
-  suite('chromise.jquery.tabs.getCurrent', () => {
+  suite('chromise.tabs.getCurrent', () => {
     test('normal', done => {
       let url = 'http://example.org/';
-      chromise.jquery.tabs.getCurrent()
+      chromise.tabs.getCurrent()
       .then(tab => {
         // console.log(tab);
         // chai.assert.equal(tab.url, url);
@@ -95,10 +96,10 @@ $(() => {
     });
   });
 
-  suite('chromise.jquery.tabs.query', () => {
+  suite('chromise.tabs.query', () => {
     test('normal', done => {
       let url = 'http://example.org/';
-      chromise.jquery.tabs.query({active: true})
+      chromise.tabs.query({active: true})
       .then(tabs => {
         let tab = tabs[0];
         // console.log(tabs);
