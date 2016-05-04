@@ -1,6 +1,5 @@
-let appendMethods = require('./appendMethods'),
-    Event = require('./Events'),
-    createMethod = require('./createMethod');
+let appendMethods = require('./appendMethods');
+let Event = require('./Event');
 
 
 class Api {

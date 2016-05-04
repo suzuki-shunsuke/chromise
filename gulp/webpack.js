@@ -22,29 +22,28 @@
  */
 
 
-var gulp = require('gulp'),
-    gulpif = require('gulp-if'),
-    uglify = require('gulp-uglify'),
-    _ = require('underscore'),
-    // webpack = require('webpack-stream');
-    webpack = require('webpack'),
-    webpackStream = require('webpack-stream'),
-    path = require('path');
+var gulp = require('gulp');
+var gulpif = require('gulp-if');
+var uglify = require('gulp-uglify');
+var _ = require('underscore');
+// webpack = require('webpack-stream');
+var webpack = require('webpack');
+var webpackStream = require('webpack-stream');
+// var path = require('path');
 
-configs = {
+
+var configs = {
   'Chromise': {
-    src: './src/**/*.js',
+    src: './src/Chromise.js',
     dest: './dist',
     minified: false,
     webpack: {
-      entry: {
-        'Chromise': ['./src/Chromise.js']
-      },
+      entry: ['./src/Chromise.js'],
       externals: {
         'sinon-chrome': 'chrome',
       },
       output: {
-        filename: '[name].js',
+        filename: 'Chromise.js',
         library: 'Chromise',
         libraryTarget: 'umd'
       },
@@ -155,14 +154,14 @@ _.each(configs, function(config, key) {
     gulp.src(config.src)
     .pipe(webpackStream(config.webpack))
     .pipe(gulpif(config.minified, uglify()))
-    .pipe(gulp.dest(config.dest)); 
+    .pipe(gulp.dest(config.dest));
   });
 });
 
 gulp.task(
   'webpack.src',
   ['webpack.Chromise', 'webpack.jquery', 'webpack.mithril']
-)
+);
 
 gulp.task(
   'webpack',

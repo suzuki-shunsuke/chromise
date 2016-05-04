@@ -25,7 +25,7 @@ class Storage extends Api {
       self[storage_type] = new StorageArea(deferred, promise, storage_type);
     });
   }
-};
+}
 
 
 module.exports = Storage;

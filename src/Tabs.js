@@ -45,7 +45,7 @@ class Tabs extends Api {
       ]
     );
   }
-};
+}
 
 
 module.exports = Tabs;

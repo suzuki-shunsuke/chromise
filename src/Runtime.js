@@ -17,7 +17,7 @@ class Runtime extends Api {
       ], ['onStartup', 'onInstalled']
     );
   }
-};
+}
 
 
 module.exports = Runtime;

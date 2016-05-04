@@ -3,22 +3,20 @@ function capitalize(str) {
 }
 
 
-let api_names = [
-  'runtime',
-  'tabs',
-  'storage'
-];
-
-let apis = {};
-api_names.forEach(
-  api_name => apis[api_name] = require('./' + capitalize(api_name))
-);
+let Apis = {
+  runtime: require('./Runtime'),
+  tabs: require('./Tabs'),
+  storage: require('./Storage'),
+};
 
 
 class Chromise {
   constructor(deferred, promise) {
     let self = this;
-    api_names.forEach(api_name => self[api_name] = new (apis[api_name])(deferred, promise));
+    Object.keys(Apis).forEach(api_name => {
+      let Api = Apis[api_name];
+      self[api_name] = new Api(deferred, promise);
+    });
   }
 }
 
