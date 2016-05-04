@@ -22,17 +22,17 @@
  */
 
 
-var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var uglify = require('gulp-uglify');
-var _ = require('underscore');
+let gulp = require('gulp');
+let gulpif = require('gulp-if');
+let uglify = require('gulp-uglify');
+let _ = require('underscore');
 // webpack = require('webpack-stream');
-var webpack = require('webpack');
-var webpackStream = require('webpack-stream');
-// var path = require('path');
+let webpack = require('webpack');
+let webpackStream = require('webpack-stream');
+// let path = require('path');
 
 
-var configs = {
+let configs = {
   'Chromise': {
     src: './src/Chromise.js',
     dest: './dist',
@@ -130,7 +130,7 @@ var configs = {
   },
 };
 
-_.each(configs, function(config, key) {
+_.each(configs, (config, key) => {
   config.webpack.resolve = {
     extensions: ['', '.js'],
     modulesDirectories: ['node_modules', 'bower_components'],
@@ -150,7 +150,7 @@ _.each(configs, function(config, key) {
     ]
   };
 
-  gulp.task('webpack.' + key, function() {
+  gulp.task('webpack.' + key, () => {
     gulp.src(config.src)
     .pipe(webpackStream(config.webpack))
     .pipe(gulpif(config.minified, uglify()))
@@ -163,9 +163,4 @@ gulp.task(
   ['webpack.Chromise', 'webpack.jquery', 'webpack.mithril']
 );
 
-gulp.task(
-  'webpack',
-  _.keys(configs).map(function(key) {
-    return 'webpack.' + key;
-  })
-);
+gulp.task('webpack', _.keys(configs).map(key => 'webpack.' + key));

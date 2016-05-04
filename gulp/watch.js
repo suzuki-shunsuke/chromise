@@ -9,25 +9,20 @@
  */
 
 
-var gulp = require('gulp'),
-    _ = require('underscore');
+let gulp = require('gulp');
+let _ = require('underscore');
 
-var configs = {
+let configs = {
   'src': ['webpack.src'],
   'dist': ['rsync'],
   'test.real.storage': ['webpack.test.real.storage'],
   'test.mock.storage': ['webpack.test.mock.storage'],
 };
 
-_.each(configs, function(tasks, src) {
-  gulp.task('watch.' + src, function() {
+_.each(configs, (tasks, src) => {
+  gulp.task('watch.' + src, () => {
     gulp.watch('./' + src.replace(/\./g, '/') + '**/*.js', tasks);
   });
 });
 
-gulp.task(
-  'watch',
-  _.keys(configs).map(function(key) {
-    return 'watch.' + key;
-  })
-);
+gulp.task('watch', _.keys(configs).map(key => 'watch.' + key));

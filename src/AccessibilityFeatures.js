@@ -26,7 +26,8 @@ class AccessibilityFeatures extends Api {
       'autoclick',
       'virtualKeyboard',
       'animationPolicy',
-    ].forEach(name => {
+    ].filter(name => name in chrome.accessibilityFeatures)
+    .forEach(name => {
       self[name] = new AccessibilityFeature(deferred, promise, name);
     });
   }

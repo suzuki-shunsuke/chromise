@@ -7,16 +7,16 @@
  */
 
 
-var gulp = require('gulp'),
-    rsync = require('gulp-rsync');
+let gulp = require('gulp');
+let rsync = require('gulp-rsync');
 
-var tasks = [
+let tasks = [
   'test.real.storage',
   'test.mock.storage',
 ];
 
-tasks.forEach(function(task) {
-  gulp.task('rsync.' + task, function() {
+tasks.forEach(task => {
+  gulp.task('rsync.' + task, () => {
     return gulp.src('./dist/**/*.js')
     .pipe(rsync({
       root: './dist',
@@ -27,9 +27,4 @@ tasks.forEach(function(task) {
   });
 });
 
-gulp.task(
-  'rsync',
-  tasks.map(function(task) {
-    return 'rsync.' + task; 
-  })
-);
+gulp.task('rsync', tasks.map(task => 'rsync.' + task));

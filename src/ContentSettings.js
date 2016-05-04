@@ -18,7 +18,8 @@ class ContentSettings extends Api {
 
     ['cookies', 'images', 'javascript', 'location', 'plugins', 'popups',
      'notifications', 'fullscreen', 'mouselock', 'unsandboxedPlugins',
-     'automaticDownloads'].forEach(name => {
+     'automaticDownloads'].filter(name => name in chrome.contentSettings)
+    .forEach(name => {
       self[name] = new ContentSetting(deferred, promise, name);
     });
   }
