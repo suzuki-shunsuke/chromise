@@ -1,4 +1,5 @@
-let Api = require('./Api');
+let Api = require('./Api'),
+    chrome = require('sinon-chrome');
 
 
 class Tabs extends Api {

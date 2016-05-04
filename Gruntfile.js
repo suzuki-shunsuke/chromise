@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         options: {
           layout: 'byComponent',
           cleanTargetDir: true,
-          targetDir: 'test/test1/bower',
+          targetDir: 'test/mock/storage/bower',
           install: true,
           verbose: false,
           cleanBowerDir: false
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     },
     mocha: {
       test: {
-        src: ['']
+        src: ['test/mock/storage/test.html']
       }
     },
     simplemocha: {

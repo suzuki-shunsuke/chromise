@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 
 var tasks = [
   'test.real.storage',
+  'test.mock.storage',
 ];
 
 tasks.forEach(function(task) {

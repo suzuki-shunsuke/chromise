@@ -1,3 +1,6 @@
+let chrome = require('sinon-chrome');
+
+
 function convertArgumentsToArray(args) {
   return args.length === 1 ? [args[0]] : Array.apply(null, args);
 }

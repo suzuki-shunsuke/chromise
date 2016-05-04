@@ -1,4 +1,5 @@
-let Api = require('./Api');
+let Api = require('./Api'),
+    chrome = require('sinon-chrome');
 
 class StorageArea extends Api {
   constructor(deferred, promise, storage_type) {

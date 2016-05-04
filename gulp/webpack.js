@@ -28,7 +28,8 @@ var gulp = require('gulp'),
     _ = require('underscore'),
     // webpack = require('webpack-stream');
     webpack = require('webpack'),
-    webpackStream = require('webpack-stream');
+    webpackStream = require('webpack-stream'),
+    path = require('path');
 
 configs = {
   'Chromise': {
@@ -38,6 +39,9 @@ configs = {
     webpack: {
       entry: {
         'Chromise': ['./src/Chromise.js']
+      },
+      externals: {
+        'sinon-chrome': 'chrome',
       },
       output: {
         filename: '[name].js',
@@ -56,11 +60,12 @@ configs = {
       },
       externals: {
         'jquery': 'jQuery',
+        'sinon-chrome': 'chrome',
       },
       output: {
         filename: '[name].js',
         library: 'chromise',
-        libraryTarget: 'var'
+        libraryTarget: 'umd'
       },
     }
   },
@@ -74,6 +79,7 @@ configs = {
       },
       externals: {
         'mithril': 'm',
+        'sinon-chrome': 'chrome',
       },
       output: {
         filename: '[name].js',
@@ -94,7 +100,8 @@ configs = {
         'jquery': 'jQuery',
         'mithril': 'm',
         'mocha': true,
-        'chai': true
+        'chai': true,
+        'sinon-chrome': 'chrome',
       },
       output: {
         filename: '[name].js',
@@ -102,17 +109,23 @@ configs = {
     }
   },
   'test.mock.storage': {
-    src: './test/mock/storage/src/**/*.js',
+    src: '**/*.js',
     dest: './test/mock/storage/dist',
     minified: false,
     webpack: {
       entry: {
         'index': ['./test/mock/storage/src/index.js']
       },
-      // externals: ['jquery', 'mithril'],
+      externals: [{
+        'jquery': 'jQuery',
+        'mocha': true,
+        'chai': true,
+        'sinon-chrome': 'chrome'
+      }],
       output: {
         filename: '[name].js',
       },
+      // target: 'node',
     }
   },
 };
@@ -124,7 +137,6 @@ _.each(configs, function(config, key) {
   };
   config.webpack.plugins = [
     // new webpack.ContextReplacementPlugin(/sinon/, /^$/),
-    new webpack.IgnorePlugin(/sinon/),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
   ];
