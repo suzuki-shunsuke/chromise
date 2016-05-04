@@ -94,7 +94,8 @@ configs = {
     minified: false,
     webpack: {
       entry: {
-        'index': ['./test/real/storage/src/index.js']
+        'eventPage': ['./test/real/storage/src/eventPage.js'],
+        'test': ['./test/real/storage/src/test.js']
       },
       externals: {
         'jquery': 'jQuery',
