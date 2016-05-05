@@ -1,15 +1,8 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class DeclarativeContent extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.declarativeContent,
-      [], ['onPageChanged']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = DeclarativeContent;
+module.exports = createApiClass(
+  chrome.declarativeContent, [], ['onPageChanged']
+);

@@ -1,17 +1,11 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class BrowserAction extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.browserAction,
-      ['getTitle', 'setIcon', 'getPopup', 'getBadgeText',
-       'getBadgeBackgroundColor'],
-      ['onClicked']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = BrowserAction;
+module.exports = createApiClass(
+  chrome.browserAction, [
+    'getTitle', 'setIcon', 'getPopup', 'getBadgeText',
+    'getBadgeBackgroundColor'
+  ], ['onClicked']
+);

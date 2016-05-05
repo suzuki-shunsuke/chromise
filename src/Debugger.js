@@ -1,16 +1,9 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class Debugger extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.debugger,
-      ['attach', 'detach', 'sendCommand', 'getTargets'],
-      ['onEvent', 'onDetach']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = Debugger;
+module.exports = createApiClass(
+  chrome.debugger, ['attach', 'detach', 'sendCommand', 'getTargets'],
+  ['onEvent', 'onDetach']
+);

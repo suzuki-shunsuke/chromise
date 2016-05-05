@@ -1,15 +1,8 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class Alarms extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.alarms,
-      ['get', 'getAll', 'clear', 'clearAll'], ['onAlarm']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = Alarms;
+module.exports = createApiClass(
+  chrome.alarms, ['get', 'getAll', 'clear', 'clearAll'], ['onAlarm']
+);

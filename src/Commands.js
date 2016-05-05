@@ -1,15 +1,6 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class Commands extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.commands,
-      ['getAll'], ['onCommand']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = Commands;
+module.exports = createApiClass(chrome.commands, ['getAll'], ['onCommand']);

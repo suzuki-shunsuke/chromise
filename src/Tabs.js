@@ -1,6 +1,5 @@
 let chrome = require('sinon-chrome');
 
-let Api = require('./Api');
 let createApiClass = require('./createApiClass');
 
 

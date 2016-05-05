@@ -1,15 +1,9 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class ContextMenus extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.contextMenus,
-      ['create', 'update', 'remove', 'removeAll'], ['onClicked']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = ContextMenus;
+module.exports = createApiClass(
+  chrome.contextMenus, ['create', 'update', 'remove', 'removeAll'],
+  ['onClicked']
+);

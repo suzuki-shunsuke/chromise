@@ -1,23 +1,17 @@
-let Api = require('./Api'),
-    chrome = require('sinon-chrome');
+let chrome = require('sinon-chrome');
+
+let createApiClass = require('./createApiClass');
 
 
-class Runtime extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.runtime, [
-        'getBackgroundPage',
-        'openOptionsPage',
-        'setUninstallURL',
-        'requestUpdateCheck',
-        'sendMessage',
-        // 'sendNativeMessage',
-        'getPlatformInfo',
-        'getPackageDirectoryEntry',
-      ], ['onStartup', 'onInstalled']
-    );
-  }
-}
-
-
-module.exports = Runtime;
+module.exports = createApiClass(
+  chrome.runtime, [
+    'getBackgroundPage',
+    'openOptionsPage',
+    'setUninstallURL',
+    'requestUpdateCheck',
+    'sendMessage',
+    // 'sendNativeMessage',
+    'getPlatformInfo',
+    'getPackageDirectoryEntry',
+  ], ['onStartup', 'onInstalled']
+);

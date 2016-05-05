@@ -1,15 +1,9 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class CertificateProvider extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.certificateProvider,
-      [], ['onCertificatesRequested', 'onSignDigestRequested']
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = CertificateProvider;
+module.exports = createApiClass(
+  chrome.certificateProvider, [],
+  ['onCertificatesRequested', 'onSignDigestRequested']
+);

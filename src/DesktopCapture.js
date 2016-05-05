@@ -1,15 +1,8 @@
-let Api = require('./Api');
 let chrome = require('sinon-chrome');
 
-
-class DesktopCapture extends Api {
-  constructor(deferred, promise) {
-    super(
-      deferred, promise, chrome.desktopCapture,
-      ['chooseDesktopMedia'], []
-    );
-  }
-}
+let createApiClass = require('./createApiClass');
 
 
-module.exports = DesktopCapture;
+module.exports = createApiClass(
+  chrome.desktopCapture, ['chooseDesktopMedia'], []
+);
