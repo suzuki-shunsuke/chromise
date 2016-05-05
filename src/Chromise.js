@@ -7,7 +7,7 @@ function capitalize(str) {
 
 
 let Apis = {
-//  accessibilityFeatures: require('./AccessibilityFeatures'),
+  accessibilityFeatures: require('./AccessibilityFeatures'),
 //  alarms: require('./Alarms'),
 //  bookmarks: require('./Bookmarks'),
 //  browserAction: require('./BrowserAction'),
