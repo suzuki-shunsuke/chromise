@@ -34,11 +34,11 @@ let webpackStream = require('webpack-stream');
 
 let configs = {
   'Chromise': {
-    src: './src/Chromise.js',
+    src: './src/base.js',
     dest: './dist',
     minified: false,
     webpack: {
-      entry: ['./src/Chromise.js'],
+      entry: ['./src/base.js'],
       externals: {
         'sinon-chrome': 'chrome',
       },

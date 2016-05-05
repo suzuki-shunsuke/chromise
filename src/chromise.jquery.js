@@ -1,4 +1,4 @@
 let $ = require('jquery'),
-    Chromise = require('./Chromise');
+    Chromise = require('./base');
 
 module.exports = new Chromise($.Deferred.bind($), d => d.promise());
