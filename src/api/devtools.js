@@ -3,6 +3,10 @@ let childlen_params = {
     ['eval', 'getResources'], ['onResourceAdded', 'onResourceContentCommitted']
   ],
   'network': [['getHAR'], ['onRequestFinished', 'onNavigated']],
+  'panel': [['create', 'setOpenResourceHandler', 'openResource'], [], {
+    'elements': [['createSidebarPane']],
+    'sources': [['createSidebarPane']],
+  }]
 };
 
 
