@@ -1,11 +1,6 @@
 let chrome = require('sinon-chrome');
 
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-
 let Apis = {
   accessibilityFeatures: require('./AccessibilityFeatures'),
   alarms: require('./Alarms'),
