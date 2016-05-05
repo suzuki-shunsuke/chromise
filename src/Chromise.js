@@ -7,19 +7,19 @@ function capitalize(str) {
 
 
 let Apis = {
-  accessibilityFeatures: require('./AccessibilityFeatures'),
-  alarms: require('./Alarms'),
-  bookmarks: require('./Bookmarks'),
-  browserAction: require('./BrowserAction'),
-  browsingData: require('./BrowsingData'),
-  certificateProvider: require('./CertificateProvider'),
-  commands: require('./Commands'),
-  contentSettings: require('./ContentSettings'),
-  contextMenus: require('./ContextMenus'),
-  cookies: require('./Cookies'),
-  runtime: require('./Runtime'),
+//  accessibilityFeatures: require('./AccessibilityFeatures'),
+//  alarms: require('./Alarms'),
+//  bookmarks: require('./Bookmarks'),
+//  browserAction: require('./BrowserAction'),
+//  browsingData: require('./BrowsingData'),
+//  certificateProvider: require('./CertificateProvider'),
+//  commands: require('./Commands'),
+//  contentSettings: require('./ContentSettings'),
+//  contextMenus: require('./ContextMenus'),
+//  cookies: require('./Cookies'),
+//  runtime: require('./Runtime'),
   storage: require('./Storage'),
-  tabs: require('./Tabs'),
+//  tabs: require('./Tabs'),
 };
 
 

@@ -1,14 +1,16 @@
 let Api = require('./Api');
 
 
-function createApiClass(api, method_names, event_names) {
-  class SubApi extends Api {
-    constructor(deferred, promise) {
-      super(deferred, promise, api, method_names, event_names);
-    }
+{
+  api: api,
+  method_names: method_names,
+  event_names: event_names,
+  children: {
+    name: name
+    method_names: method_names,
+    event_names: event_names,
   }
-  
-  return SubApi;
 }
+
 
 module.exports = createApiClass;
