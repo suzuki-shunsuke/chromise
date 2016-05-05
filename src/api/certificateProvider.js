@@ -1,0 +1,3 @@
+module.exports = [
+  [], ['onCertificatesRequested', 'onSignDigestRequested']
+];

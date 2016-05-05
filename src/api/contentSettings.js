@@ -1,7 +1,3 @@
-let chrome = require('sinon-chrome');
-
-let createApiClass = require('./createApiClass');
-
 let childlen_params = {};
 [
   'cookies', 'images', 'javascript', 'location', 'plugins', 'popups',
@@ -13,6 +9,4 @@ let childlen_params = {};
   ];
 });
 
-module.exports = createApiClass(
-  chrome.contentSettings, [], [], childlen_params
-);
+module.exports = [[], [], childlen_params];

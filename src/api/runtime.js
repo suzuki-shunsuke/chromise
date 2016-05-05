@@ -1,10 +1,5 @@
-let chrome = require('sinon-chrome');
-
-let createApiClass = require('./createApiClass');
-
-
-module.exports = createApiClass(
-  chrome.runtime, [
+module.exports = [
+  [
     'getBackgroundPage',
     'openOptionsPage',
     'setUninstallURL',
@@ -14,4 +9,4 @@ module.exports = createApiClass(
     'getPlatformInfo',
     'getPackageDirectoryEntry',
   ], ['onStartup', 'onInstalled']
-);
+];
